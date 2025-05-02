@@ -25,6 +25,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 
+app.get("/", () => {
+  res.send(<h1>HOMEPAGE BACKEND</h1>);
+});
+
 // Setup Swagger
 setupSwaggerDocs(app);
 
