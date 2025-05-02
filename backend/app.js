@@ -26,7 +26,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 
 app.get("/", () => {
-  res.send(<h1>HOMEPAGE BACKEND</h1>);
+  res.send(`HomePage :- Task Tracker  Backend.`);
 });
 
 // Setup Swagger
