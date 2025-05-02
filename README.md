@@ -34,8 +34,8 @@ A secure RESTful API for managing users, projects, and tasks using **Node.js**, 
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/tanuj8851/TaskTracker.git
+cd TaskTracker
 npm install
 
 ```
