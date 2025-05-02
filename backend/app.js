@@ -12,7 +12,7 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: "mytasktreck.netlify.app",
+    origin: true,
     credentials: true,
   })
 );
