@@ -41,9 +41,10 @@ const loginUser = async (req, res) => {
 
 // Logout Controller
 const logoutUser = (req, res) => {
-  res.cookie("token", "", {
+  res.clearCookie("token", {
     httpOnly: true,
-    expires: new Date(0),
+    secure: true,
+    sameSite: "None",
   });
   res.status(200).json({ message: "Logged Out" });
 };
