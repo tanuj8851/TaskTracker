@@ -32,3 +32,10 @@ A secure RESTful API for managing users, projects, and tasks using **Node.js**, 
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 npm install
+
+```
+
+# HomePage
+
+https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/HomePage.png
+
