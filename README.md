@@ -1,4 +1,4 @@
-# 🛠️ Project Management API
+# 🛠️ Task Tracker Application
 
 A secure RESTful API for managing users, projects, and tasks using **Node.js**, **Express**, **MongoDB**, and **JWT Authentication**. Includes API documentation via **Swagger**.
 
