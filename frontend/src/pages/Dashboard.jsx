@@ -1,6 +1,7 @@
-// src/pages/Dashboard.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useAuth } from "../context/AuthContext";
+import toast from 'react-hot-toast';
 
 const Dashboard = () => {
     const [projects, setProjects] = useState([]);
@@ -32,6 +33,7 @@ const Dashboard = () => {
     const handleAddProject = async () => {
         if (!projectName.trim()) return;
         await createProject(projectName.trim());
+        toast.success('Project created.')
         setProjectTitle('');
         fetchProjects();
     };
@@ -39,6 +41,7 @@ const Dashboard = () => {
     const handleAddTask = async () => {
         if (!taskTitle.trim() || !taskDescription.trim()) return;
         await createTask(selectedProject, taskTitle.trim(), taskDescription.trim());
+        toast.success("Task created.")
         setTaskTitle('');
         setTaskDescription('');
         fetchTasks(selectedProject);
@@ -47,9 +50,20 @@ const Dashboard = () => {
     const handleEditTask = async (task) => {
         const newTitle = prompt('Edit task title:', task.title);
         const newDesc = prompt('Edit task description:', task.description);
-        if (newTitle !== null && newDesc !== null) {
-            await updateTask(task._id, newTitle.trim(), newDesc.trim());
+        const newStatus = prompt('Edit task status (todo, in-progress, completed):', task.status);
+
+        const validStatuses = ["todo", "in-progress", "completed"];
+        if (
+            newTitle !== null &&
+            newDesc !== null &&
+            newStatus !== null &&
+            validStatuses.includes(newStatus.trim().toLowerCase())
+        ) {
+            await updateTask(task._id, newTitle.trim(), newDesc.trim(), newStatus.trim().toLowerCase());
+            toast.success('Task updated.')
             fetchTasks(selectedProject);
+        } else {
+            alert("Invalid input. Status must be one of: todo, in-progress, completed.");
         }
     };
 
@@ -58,9 +72,13 @@ const Dashboard = () => {
         fetchTasks(selectedProject);
     };
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+    };
+
     return (
         <div className="bg-blue-50 text-blue-900 min-h-screen">
-
             <main className="p-6 max-w-5xl mx-auto">
                 <section className="mb-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -122,10 +140,12 @@ const Dashboard = () => {
                             <h2 className="text-lg font-semibold mb-2">Tasks</h2>
                             <ul className="space-y-2">
                                 {tasks?.map((task) => (
-                                    <li key={task._id} className="border p-2 rounded flex justify-between items-center">
+                                    <li key={task._id} className="border p-2 rounded flex justify-between items-start">
                                         <div>
                                             <h3 className="font-bold">{task.title}</h3>
                                             <p>{task.description}</p>
+                                            <p><strong>Status:</strong> {task.status}</p>
+                                            <p><strong>Created:</strong> {formatDate(task.createdAt)}</p>
                                         </div>
                                         <div className="space-x-2">
                                             <button

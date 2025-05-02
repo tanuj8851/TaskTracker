@@ -51,6 +51,22 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await axiosInstance.get("/api/auth/me");
+                setUser(res.data.user);
+            } catch (err) {
+                setUser(null); // Not logged in or session expired
+            } finally {
+                setLoading(false); // Done loading
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+
     const getProjects = () => axiosInstance.get('/api/projects');
     const createProject = (name) => axiosInstance.post('/api/projects', { name });
 
@@ -58,14 +74,14 @@ export const AuthProvider = ({ children }) => {
     const createTask = (projectId, title, description) =>
         axiosInstance.post(`/api/tasks/${projectId}`, { title, description });
 
-    const updateTask = (id, title, description) =>
-        axiosInstance.put(`/api/tasks/${id}`, { title, description });
+    const updateTask = (id, title, description, status) =>
+        axiosInstance.put(`/api/tasks/${id}`, { title, description, status });
 
     const deleteTask = (id) => axiosInstance.delete(`/api/tasks/${id}`);
 
     return (
         <AuthContext.Provider value={{ user, isAuthenticated, login, logout, signup, loading, getProjects, createProject, getTasks, createTask, updateTask, deleteTask }}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };

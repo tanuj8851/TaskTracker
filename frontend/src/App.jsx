@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProtectedRoute from './components/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
-import UserProfile from './pages/Userprofile';
+
 import Dashboard from './pages/Dashboard';
 
 function App() {
@@ -25,7 +25,6 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
         } >
-          <Route path="profile" element={<UserProfile />} />
         </Route>
       </Routes>
       <Footer />
