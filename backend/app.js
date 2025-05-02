@@ -25,7 +25,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.send(`HomePage :- Task Tracker  Backend.`);
 });
 
