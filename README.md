@@ -37,5 +37,21 @@ npm install
 
 # HomePage
 
-https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/HomePage.png
+![homepage](https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/HomePage.png)
+
+# Signup Page
+
+![signupPage](https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/signup.png)
+
+#Login Page
+
+![loginPage](https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/login.png)
+
+#Dashboard - Project Creation Page
+
+![Dashboard](https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/dashboard-project-create.png)
+
+# Dashboard - Task Management Page
+
+![Task](https://s3.eu-north-1.amazonaws.com/myapp.tanuj/img/task+create.png)
 
