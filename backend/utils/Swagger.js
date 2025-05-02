@@ -10,7 +10,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:5000/api",
+        url: "https://tasktracker-i4q2.onrender.com/api",
       },
     ],
     components: {
